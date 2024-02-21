@@ -1,8 +1,29 @@
 import { useState } from "react";
 import styled from "styled-components";
+import api from "../axios/api";
 
 const Login = () => {
   const [mode, setMode] = useState("login");
+  const [id, setId] = useState("");
+  const [password, setPassword] = useState("");
+  const [nickname, setNickname] = useState("");
+
+  const handleSignup = () => {
+    const data = {
+      id,
+      password,
+      nickname,
+    };
+
+    api
+      .post("/register", data)
+      .then((response) => {
+        console.log("회원가입 성공!", response.data);
+      })
+      .catch((error) => {
+        console.log("회원가입 실패:", error.response.data);
+      });
+  };
 
   return (
     <LoginBox>
@@ -17,10 +38,25 @@ const Login = () => {
       ) : (
         <>
           <HeaderTitle>회원가입</HeaderTitle>
-          <InputField type="text" placeholder="아이디 ( 4~10글자 )" />
-          <InputField type="password" placeholder="비밀번호 ( 4~15글자 )" />
-          <InputField type="text" placeholder="닉네임 ( 1~10글자 )" />
-          <Button>회원가입</Button>
+          <InputField
+            type="text"
+            placeholder="아이디 ( 4~10글자 )"
+            value={id}
+            onChange={(e) => setId(e.target.value)}
+          />
+          <InputField
+            type="password"
+            placeholder="비밀번호 ( 4~15글자 )"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <InputField
+            type="text"
+            placeholder="닉네임 ( 1~10글자 )"
+            value={nickname}
+            onChange={(e) => setNickname(e.target.value)}
+          />
+          <Button onClick={handleSignup}>회원가입</Button>
           <Button onClick={() => setMode("login")}>로그인</Button>
         </>
       )}
