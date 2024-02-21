@@ -1,10 +1,14 @@
 import styled from "styled-components";
+import Tabs from "./Tabs";
 
 const Header = () => {
   return (
-    <Container>
-      <Title>Spurs Fanletter</Title>
-    </Container>
+    <>
+      <Container>
+        <Title>Spurs Fanletter</Title>
+        <Tabs />
+      </Container>
+    </>
   );
 };
 
