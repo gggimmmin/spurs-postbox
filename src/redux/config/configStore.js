@@ -1,14 +1,14 @@
-import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import letters from "../modules/letters";
-import member from "../modules/member";
+import { configureStore } from "@reduxjs/toolkit";
+import letterSlice from "../modules/letterSlice";
+import memberSlice from "../modules/memberSlice";
 
-const rootReducer = combineReducers({
-  letters,
-  member,
-});
+// const rootReducer = combineReducers({
+//   letterSlice,
+//   memberSlice,
+// });
 
 const store = configureStore({
-  reducer: rootReducer,
+  reducer: { letterSlice, memberSlice },
 });
 
 export default store;
