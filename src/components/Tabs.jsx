@@ -13,10 +13,10 @@ export default function Tabs() {
   };
   return (
     <TabsWrapper onClick={onActiveMember}>
-      <Tab $activeMember={activeMember}>카리나</Tab>
-      <Tab $activeMember={activeMember}>윈터</Tab>
-      <Tab $activeMember={activeMember}>닝닝</Tab>
-      <Tab $activeMember={activeMember}>지젤</Tab>
+      <Tab $activeMember={activeMember}>SON</Tab>
+      <Tab $activeMember={activeMember}>Romero</Tab>
+      <Tab $activeMember={activeMember}>Maddison</Tab>
+      <Tab $activeMember={activeMember}>Kulusevski</Tab>
     </TabsWrapper>
   );
 }
@@ -45,7 +45,7 @@ const Tab = styled.li`
   }}
 
   font-size: 20px;
-  width: 80px;
+  width: 110px;
   text-align: center;
   padding: 12px 6px;
   border-radius: 12px;

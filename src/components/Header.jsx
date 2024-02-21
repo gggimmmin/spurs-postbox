@@ -4,7 +4,7 @@ import styled from "styled-components";
 export default function Header() {
   return (
     <Container>
-      <Title>에스파 팬레터함</Title>
+      <Title>Spurs Fanletter</Title>
       <Tabs />
     </Container>
   );
@@ -17,7 +17,7 @@ const Container = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 24px;
+  padding: 10px;
 `;
 
 const Title = styled.h1`

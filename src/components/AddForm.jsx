@@ -11,7 +11,7 @@ export default function AddForm() {
 
   const [nickname, setNickname] = useState("");
   const [content, setContent] = useState("");
-  const [member, setMember] = useState("카리나");
+  const [member, setMember] = useState("SON");
 
   const onAddLetter = (event) => {
     event.preventDefault();
@@ -54,10 +54,10 @@ export default function AddForm() {
       <SelectWrapper>
         <label>누구에게 보내실 건가요?</label>
         <select onChange={(event) => setMember(event.target.value)}>
-          <option>카리나</option>
-          <option>윈터</option>
-          <option>닝닝</option>
-          <option>지젤</option>
+          <option>SON</option>
+          <option>Romero</option>
+          <option>Maddison</option>
+          <option>Kulusevski</option>
         </select>
       </SelectWrapper>
       <Button text="팬레터 등록" />
