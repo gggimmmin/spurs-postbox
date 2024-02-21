@@ -6,14 +6,14 @@ import Detail from "../pages/Detail";
 import Profile from "../pages/Profile";
 
 const Router = () => {
-  const [isLogin, setIsLogin] = useState(false);
+  const [isLogin, setIsLogin] = useState(true);
 
   return (
     <BrowserRouter>
       <Routes>
         {isLogin ? (
           <>
-            <Route path="/home" element={<Home />} />
+            <Route path="/" element={<Home />} />
             <Route path="/detail/:id" element={<Detail />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="*" element={<Navigate replace to="/" />} />
