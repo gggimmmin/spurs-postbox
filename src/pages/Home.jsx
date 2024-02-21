@@ -1,10 +1,12 @@
 import styled from "styled-components";
 import Header from "../components/Header";
+import AddForm from "../components/AddForm";
 
 const Home = () => {
   return (
     <Container>
       <Header />
+      <AddForm />
     </Container>
   );
 };
