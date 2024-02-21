@@ -1,14 +1,12 @@
 import styled from "styled-components";
 
-const Button = ({ text, onclick = () => {} }) => {
+export default function Button({ text, onClick = () => {} }) {
   return (
     <BtnWrapper>
-      <button onClick={onclick}>{text}</button>
+      <button onClick={onClick}>{text}</button>
     </BtnWrapper>
   );
-};
-
-export default Button;
+}
 
 const BtnWrapper = styled.div`
   display: flex;

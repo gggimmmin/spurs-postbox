@@ -1,17 +1,17 @@
+import AddForm from "@components/AddForm";
+import Header from "@components/Header";
+import LetterList from "@components/LetterList";
 import styled from "styled-components";
-import Header from "../components/Header";
-import AddForm from "../components/AddForm";
 
-const Home = () => {
+export default function Home() {
   return (
     <Container>
       <Header />
       <AddForm />
+      <LetterList />
     </Container>
   );
-};
-
-export default Home;
+}
 
 const Container = styled.div`
   display: flex;

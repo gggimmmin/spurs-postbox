@@ -1,14 +1,9 @@
-import { configureStore } from "@reduxjs/toolkit";
-import letterSlice from "../modules/letterSlice";
-import memberSlice from "../modules/memberSlice";
+import { createStore, combineReducers } from "redux";
+import letters from "@redux/modules/letters";
+import member from "@redux/modules/member";
 
-// const rootReducer = combineReducers({
-//   letterSlice,
-//   memberSlice,
-// });
+const rootReducer = combineReducers({ letters, member });
 
-const store = configureStore({
-  reducer: { letterSlice, memberSlice },
-});
+const store = createStore(rootReducer);
 
 export default store;

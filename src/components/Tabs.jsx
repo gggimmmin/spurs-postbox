@@ -1,28 +1,25 @@
 import styled, { css } from "styled-components";
-import { useDispatch, useSelector } from "react-redux";
-import { setMember } from "../redux/modules/memberSlice";
+import { useSelector, useDispatch } from "react-redux";
+import { setMember } from "@redux/modules/member";
 
-const Tabs = () => {
+export default function Tabs() {
   const activeMember = useSelector((state) => state.member);
   const dispatch = useDispatch();
 
-  const onActiveMember = (e) => {
-    if (e.target === e.currentTarget) return;
+  const onActiveMember = (event) => {
+    if (event.target === event.currentTarget) return;
 
-    dispatch(setMember(e.target.textContent));
+    dispatch(setMember(event.target.textContent));
   };
-
   return (
     <TabsWrapper onClick={onActiveMember}>
-      <Tab activeMember={activeMember}>SON</Tab>
-      <Tab activeMember={activeMember}>Romero</Tab>
-      <Tab activeMember={activeMember}>Maddison</Tab>
-      <Tab activeMember={activeMember}>Kulusevski</Tab>
+      <Tab $activeMember={activeMember}>카리나</Tab>
+      <Tab $activeMember={activeMember}>윈터</Tab>
+      <Tab $activeMember={activeMember}>닝닝</Tab>
+      <Tab $activeMember={activeMember}>지젤</Tab>
     </TabsWrapper>
   );
-};
-
-export default Tabs;
+}
 
 const TabsWrapper = styled.ul`
   background-color: gray;
@@ -35,7 +32,7 @@ const TabsWrapper = styled.ul`
 
 const Tab = styled.li`
   ${(props) => {
-    if (props.activeMember === props.children) {
+    if (props.$activeMember === props.children) {
       return css`
         background-color: yellow;
         color: black;
@@ -48,7 +45,7 @@ const Tab = styled.li`
   }}
 
   font-size: 20px;
-  width: 120px;
+  width: 80px;
   text-align: center;
   padding: 12px 6px;
   border-radius: 12px;

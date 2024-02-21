@@ -1,20 +1,16 @@
-import styled from "styled-components";
 import Tabs from "./Tabs";
+import styled from "styled-components";
 
-const Header = () => {
+export default function Header() {
   return (
-    <>
-      <Container>
-        <Title>Spurs Fanletter</Title>
-        <Tabs />
-      </Container>
-    </>
+    <Container>
+      <Title>에스파 팬레터함</Title>
+      <Tabs />
+    </Container>
   );
-};
+}
 
-export default Header;
-
-const Container = styled.div`
+const Container = styled.section`
   width: 100%;
   height: 300px;
   background-color: lightgray;
