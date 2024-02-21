@@ -1,8 +1,10 @@
 import { useState } from "react";
 import styled from "styled-components";
 import api from "../axios/api";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const navigate = useNavigate();
   const [mode, setMode] = useState("login");
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
@@ -17,11 +19,28 @@ const Login = () => {
 
     api
       .post("/register", data)
-      .then((response) => {
-        console.log("회원가입 성공!", response.data);
+      .then((res) => {
+        console.log("회원가입 성공!", res.data);
       })
-      .catch((error) => {
-        console.log("회원가입 실패:", error.response.data);
+      .catch((err) => {
+        console.log("회원가입 실패:", err.response.data);
+      });
+  };
+
+  const handleLogin = () => {
+    const data = {
+      id,
+      password,
+    };
+
+    api
+      .post("/login", data)
+      .then((res) => {
+        console.log("로그인 성공!", res.data);
+        navigate("/home");
+      })
+      .catch((err) => {
+        console.log("로그인 실패!", err.response.data);
       });
   };
 
@@ -30,9 +49,19 @@ const Login = () => {
       {mode === "login" ? (
         <>
           <HeaderTitle>로그인</HeaderTitle>
-          <InputField type="text" placeholder="아이디 ( 4~10글자 )" />
-          <InputField type="password" placeholder="비밀번호 ( 4~15글자 )" />
-          <Button>로그인</Button>
+          <InputField
+            type="text"
+            placeholder="아이디 ( 4~10글자 )"
+            value={id}
+            onChange={(e) => setId(e.target.value)}
+          />
+          <InputField
+            type="password"
+            placeholder="비밀번호 ( 4~15글자 )"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <Button onClick={handleLogin}>로그인</Button>
           <Button onClick={() => setMode("signup")}>회원가입</Button>
         </>
       ) : (
