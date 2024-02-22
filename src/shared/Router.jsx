@@ -4,6 +4,7 @@ import Detail from "@pages/Detail";
 import Profile from "@pages/Profile";
 import Login from "@pages/Login";
 import { useSelector } from "react-redux";
+import Layout from "@components/Layout";
 
 export default function Router() {
   const isLogin = useSelector((state) => state.auth.isLogin);
@@ -12,12 +13,12 @@ export default function Router() {
     <BrowserRouter>
       <Routes>
         {isLogin ? (
-          <>
+          <Route element={<Layout />}>
             <Route path="/" element={<Home />} />
             <Route path="/detail/:id" element={<Detail />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="*" element={<Navigate replace to="/" />} />
-          </>
+          </Route>
         ) : (
           <>
             <Route path="/login" element={<Login />} />
