@@ -2,10 +2,10 @@ import Button from "@components/common/Button";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
-import { login } from "@redux/modules/authSlice";
 import { toast } from "react-toastify";
 import useForm from "@hooks/useForm";
 import { authApi } from "@api/index";
+import { __login } from "@redux/modules/authSlice";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -21,19 +21,7 @@ const Login = () => {
   const onSubmitHandler = async (e) => {
     e.preventDefault();
     if (isLoginMode) {
-      try {
-        const { data } = await authApi.post("/login", {
-          id,
-          password,
-        });
-        const { accessToken, avatar, nickname, userId } = data;
-        if (data.success) {
-          dispatch(login({ accessToken, avatar, nickname, userId }));
-          toast.success("로그인 성공 !");
-        }
-      } catch (err) {
-        toast.error(err.response.data.message);
-      }
+      dispatch(__login({ id, password }));
     } else {
       try {
         const { data } = await authApi.post("/register", {
