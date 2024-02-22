@@ -13,7 +13,7 @@ const authSlice = createSlice({
       localStorage.setItem("accessToken", accessToken);
       state.isLogin = true;
     },
-    logout: (state, action) => {
+    logout: (state) => {
       state.isLogin = false;
       localStorage.clear();
     },

@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { login } from "@redux/modules/authSlice";
 import { toast } from "react-toastify";
 import useForm from "@hooks/useForm";
-import axios from "axios";
+import { authApi } from "@api/index";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -22,13 +22,10 @@ const Login = () => {
     e.preventDefault();
     if (isLoginMode) {
       try {
-        const { data } = await axios.post(
-          "https://moneyfulpublicpolicy.co.kr/login",
-          {
-            id,
-            password,
-          }
-        );
+        const { data } = await authApi.post("/login", {
+          id,
+          password,
+        });
         if (data.success) {
           dispatch(login(data.accessToken));
           toast.success("로그인 성공 !");
@@ -38,14 +35,11 @@ const Login = () => {
       }
     } else {
       try {
-        const { data } = await axios.post(
-          "https://moneyfulpublicpolicy.co.kr/register",
-          {
-            id,
-            password,
-            nickname,
-          }
-        );
+        const { data } = await authApi.post("/register", {
+          id,
+          password,
+          nickname,
+        });
         if (data.success) {
           setIsLoginMode(true);
           resetForm();
